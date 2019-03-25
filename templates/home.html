@@ -14,7 +14,7 @@
                            placeholder="How far?"
                            aria-label="MGLT"
                            aria-describedby="basic-addon2"
-                           {% if mglt %} value="{{ mglt }}" {% endif %}>
+                            {% if mglt %} value="{{ mglt }}" {% endif %}>
 
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">MGLT Distance</span>
@@ -39,7 +39,11 @@
                 {% for starship in starships %}
                     <tr>
                         <td class="text-right">{{ starship.name }}</td>
-                        <td>{{ starship.mglthours|floatformat:2 }}</td>
+                        {% if starship.mglthours %}
+                            <td>{{ starship.mglthours|floatformat:0 }}</td>
+                        {% else %}
+                            <td>unknown</td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </table>
