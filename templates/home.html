@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="row mx-auto">
+        <div class="col-sm-12 col-lg-6 offset-lg-3 center">
+            <h3 class=" display-4 text-center">MGLT IN HOURS</h3>
+            <form action="/" class="text-center">
+
+                <div class="input-group mb-3">
+
+                    <input name="mglt"
+                           type="number"
+                           class="form-control"
+                           placeholder="How far?"
+                           aria-label="MGLT"
+                           aria-describedby="basic-addon2"
+                           {% if mglt %} value="{{ mglt }}" {% endif %}>
+
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">MGLT Distance</span>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 offset-lg-3">
+            <table class="table table-borderless table-hover">
+                <thead>
+                <tr>
+                    <th style="width: 50%;" class="text-right">Starship</th>
+                    <th style="width: 50%;">Hours</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                {% for starship in starships %}
+                    <tr>
+                        <td class="text-right">{{ starship.name }}</td>
+                        <td>{{ starship.xjumps|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
