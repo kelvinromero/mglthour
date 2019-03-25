@@ -16,7 +16,7 @@ def all_starships(index_name="starships"):
     es_response = es.search(
         index=index_name,
         body={"query": {"match_all": {}}},
-        size=count_all_starships()
+        size=count_all_starships(),
     )
 
     return to_dict(es_response)

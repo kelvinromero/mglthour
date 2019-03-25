@@ -22,8 +22,10 @@ class HomeView(TemplateView):
                 startship['mglthours'] = mglt / int(startship.get('MGLT'))
             except ValueError:
                 if startship.get('MGLT') == 'unknown':
-                    startship['mglthours'] = 'unknown'
+                    startship['mglthours'] = False
             startships.append(startship)
+
+        startships = sorted(startships, key=lambda i: i['MGLT'])
 
         context['starships'] = startships
 
