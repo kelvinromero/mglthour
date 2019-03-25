@@ -2,6 +2,7 @@ from django.apps import AppConfig
 from starships.fetch import fetch_from_lib, save_to_es, index_has_update, create_index
 import requests
 from time import sleep
+from elasticsearch import NotFoundError
 
 
 class StarshipsConfig(AppConfig):
@@ -23,12 +24,16 @@ class StarshipsConfig(AppConfig):
                 sleep(10)
 
         # Index data if necessary
-        if index_has_update(index_name):
+        try:
+            index_has_update(index_name)
 
+        except NotFoundError as e:
             create_index(index_name)
-            data = fetch_from_lib("starships")
-            save_to_es(index_name, data)
 
-            return
-
-        print("API has no updates")
+        finally:
+            if index_has_update(index_name):
+                create_index(index_name)
+                data = fetch_from_lib("starships")
+                save_to_es(index_name, data)
+            else:
+                print("API has no updates")
