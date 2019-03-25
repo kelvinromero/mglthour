@@ -35,5 +35,3 @@ class StarshipsConfig(AppConfig):
                 create_index(index_name)
                 data = fetch_from_lib("starships")
                 save_to_es(index_name, data)
-            else:
-                print("API has no updates")
