@@ -19,10 +19,10 @@ class HomeView(TemplateView):
         startships = []
         for startship in all_starships():
             try:
-                startship['xjumps'] = mglt / int(startship.get('MGLT'))
+                startship['mglthours'] = mglt / int(startship.get('MGLT'))
             except ValueError:
                 if startship.get('MGLT') == 'unknown':
-                    startship['xjumps'] = 'unknown'
+                    startship['mglthours'] = 'unknown'
             startships.append(startship)
 
         context['starships'] = startships

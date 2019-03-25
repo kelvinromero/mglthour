@@ -39,7 +39,7 @@
                 {% for starship in starships %}
                     <tr>
                         <td class="text-right">{{ starship.name }}</td>
-                        <td>{{ starship.xjumps|floatformat:2 }}</td>
+                        <td>{{ starship.mglthours|floatformat:2 }}</td>
                     </tr>
                 {% endfor %}
             </table>
