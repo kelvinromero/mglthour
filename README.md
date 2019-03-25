@@ -4,11 +4,12 @@ This code fetches starships data from SWAPI.CO (Star Wars API), indexes to an El
 
 ## Dependencies
 - Docker-compose version 1.17.1
+Instructions: [Docker Docs](https://docs.docker.com/compose/install/)
 
 ## How to setup
 ```bash
 $ sudo docker-compose up
 ```
+Then, just go to development server at http://0.0.0.0:8080/ 
 
-Go to development server at http://0.0.0.0:8080/ 
-
+Any request: [Get in tough if necessary](mailto:kelvinromero@gmail.com)
